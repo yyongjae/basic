@@ -1,0 +1,26 @@
+#pragma warning(disable:4996)
+#include<stdio.h>
+int main() {
+	int N;
+	int i;
+	int from=0, to=6;
+
+	scanf("%d", &N);
+
+	if (N == 1) printf("1");
+	else {
+		for (i = 2;; i++) {
+			
+			if (N>=2+from && N < 2+to) {
+				printf("%d", i);
+				break;
+			}
+			else {
+				
+				from = to;
+				to = from + (i * 6);
+				continue;
+			}
+		}
+	}
+}
