@@ -7,17 +7,17 @@ int main() {
 
 	scanf("%d", &N);
 
-	if (N == 1) printf("1");
+	if (N == 1) printf("1");  /*1 이면 그냥 1해버려*/
 	else {
 		for (i = 2;; i++) {
 			
-			if (N>=2+from && N < 2+to) {
+			if (N>=2+from && N < 2+to) {       /*N이 몇번째 육각모양 라인에 존재하는지 확인하기*/
 				printf("%d", i);
 				break;
 			}
 			else {
 				
-				from = to;
+				from = to;       /*i번째 육각형 모양 라인의 시작숫자와 마지막 숫자 갱신*/
 				to = from + (i * 6);
 				continue;
 			}
