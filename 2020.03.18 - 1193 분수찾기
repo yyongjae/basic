@@ -6,11 +6,11 @@ int main(void) {
 	scanf("%d", &x);
 	
 	for(i=1;;i++){
-		sum+=i;
-		if(x<=sum){
+		sum+=i;    /*x가 피라미드에서 몇층에 있는 수인지 비교확인 하기위해*/
+		if(x<=sum){ /*x층수 확인*/
 		
-			if(i%2!=0){
-				sth=x-(sum-i)-1;
+			if(i%2!=0){  /*홀수층인지 짝수층인지*/
+				sth=x-(sum-i)-1;           /*좌측에서 몇번째 숫자인지 확인하기위해*/
 				printf("%d/%d", i-sth, 1+sth);
 				break;
 			}
