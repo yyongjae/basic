@@ -1,0 +1,36 @@
+#include <stdio.h>
+int ThreeBBae(int N, int cnt);
+int main()
+{
+    int N, cnt=0;
+    int gapm, flag;
+
+    scanf("%d", &N);
+
+    printf("%d", ThreeBBae(N, cnt));
+
+    return 0;
+}
+
+
+int ThreeBBae(int N, int cnt){
+    int i;
+    if(N==1){
+        return -1;
+    }
+    if(N%5==0){
+        return cnt+N/5;
+    }
+    N-=3;
+    cnt++;
+    if(N%5==0){
+        return cnt+(N/5);
+    }
+    else if(N%5!=0){
+        ThreeBBae(N, cnt);
+    }
+    else if(N==0){
+        return cnt;
+    }
+   
+}
