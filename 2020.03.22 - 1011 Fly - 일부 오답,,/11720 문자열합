@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <math.h>
+int main(){
+    long  i,N, x,y;
+    int j;
+    int flag,T;
+    scanf("%d", &T);
+    
+
+    for(j=0;j<T;j++){
+        scanf("%ld %ld", &x,&y);
+        N=y-x;
+        if(N==1) flag = 1;
+        else{
+            i=sqrt(N);
+            
+            if(i*i<N && N<=i*(i+1)){
+                flag = 2*i;
+                
+            }
+
+            else if (i*(i+1)< N && N <=(i+1)*(i+1)){
+                flag = 2*(i+1) -1;
+                
+            }
+        
+        }
+        printf("%d\n", flag);
+    }
+   
+    return 0;
+}
+
+
+________________________________________________
+#include <stdio.h>
+#include <string.h>
+int main(){
+    char cho[100];
+    int i, sum=0, N;
+
+    scanf("%d", &N);
+    
+    scanf("%s", &cho);
+    for(i=0;i<N;i++){
+        
+        sum+=cho[i]-'0';
+    }
+    printf("%d", sum);
+
+
+    return 0;
+}
