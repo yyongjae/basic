@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main(){
+    int i, flag, N,j;
+    int T, x,y;
+    scanf("%d", &T);
+    
+
+    for(j=0;j<T;j++){
+        scanf("%d %d", &x,&y);
+        N=y-x;
+        if(N==1) flag = 1;
+        else{
+            for(i=1;;i++){
+                if(i*i < N && N <= (i+1)*(i+1)){
+                    if(i*i<N && N<=i*(i+1)){
+                        flag = 2*i;
+                        break;
+                    }
+
+                    else if (i*(i+1)< N && N <=(i+1)*(i+1))
+                        flag = 2*(i+1) -1;
+                        break;
+                }
+            }
+        }
+     printf("%d\n", flag);
+    }
+   
+    return 0;
+}
