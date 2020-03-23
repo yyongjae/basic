@@ -1,0 +1,35 @@
+#pragma warning(disable:4996)
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main() {
+	char **cho;
+	int i, N, j,len, cnt = 0;
+	char ip[100] = {0,};
+
+	scanf("%d", &N);
+	getchar();
+	cho = (char**)malloc(sizeof(char*) * N);
+
+	for (i = 0; i < N; i++) {
+		scanf("%s", ip);
+		len = strlen(ip);
+		cho[i] = (char*)malloc(sizeof(char) * len);
+		strcpy(cho[i], ip);
+	}
+	
+	for (i = 0; i < N; i++) {
+		for (j = i + 1; j < N; j++) {
+			if (strcmp(cho[i], cho[j]) > 0) {
+				strcpy(ip, cho[i]);
+				strcpy(cho[i], cho[j]);
+				strcpy(cho[j], ip);
+			}
+		}
+	}
+	for (i = 0; i < N; i++) {
+		printf("%s\n", cho[i]);
+	}
+	return 0;
+
+}
