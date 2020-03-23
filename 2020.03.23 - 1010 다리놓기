@@ -1,0 +1,27 @@
+#pragma warning(disable:4996)
+#include<stdio.h>
+int main() {
+	int T, N, M;
+	int i,j,t;
+	long long cho, chng;
+
+	scanf("%d", &T);
+
+	for (i = 0; i < T; i++) {
+		cho = 1; chng = 1;
+		scanf("%d %d", &N, &M);
+		if (M - N < N) N = M - N;
+		
+		for (j = M; j > M - N; j--) {
+			cho *= j;
+			
+		}
+		for (t = 2; t <= N; t++) {
+			chng *= t;
+		}
+		
+		printf("%lld\n", cho / chng);
+	}
+	return 0;
+
+}
