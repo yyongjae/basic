@@ -1,0 +1,31 @@
+#pragma warning(disable:4996)
+#include<stdio.h>
+int cycle(int n);
+int main() {
+	int N, i, save, cnt = 0;;
+
+	scanf("%d", &N);
+	save = N;
+	while (1) {
+		save = cycle(save);
+		cnt++;
+		if (N == save) {
+			printf("%d", cnt);
+			break;
+		}
+		else continue;
+	}
+	return 0;
+
+}
+int cycle(int n) {
+	int sum, cho;
+	
+	if (n < 10) {
+		return cho = n * 10 + n;
+	}
+	else {
+		sum = (n % 10 + n / 10) %10;
+		return cho = n % 10 * 10 + sum;
+	}
+}
