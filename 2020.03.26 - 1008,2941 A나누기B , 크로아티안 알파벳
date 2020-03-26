@@ -1,0 +1,98 @@
+#include<stdio.h>
+int main(){
+    double A, B;
+    
+    scanf("%lf %lf", &A, &B);
+
+    printf("%.9lf", A/B);
+    return 0;
+}
+
+
+----------------------------------------
+
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char cho[101];
+    int i,cnt=0;
+   
+
+    scanf("%s", cho);
+
+    for(i=0;i<strlen(cho);i++){
+        if(cho[i]=='l'){
+            if(cho[i+1]=='j'){
+                cnt++;
+                i++;
+            }
+            else{
+                cnt++;
+            }
+        }
+        else if(cho[i]=='c'){
+            if(cho[i+1]=='='){
+                cnt++;
+                i++;
+            }
+            else if(cho[i+1]=='-'){
+                cnt++;
+                i++;
+            }
+             else{
+                cnt++;
+            }
+        }
+        
+        else if(cho[i]=='d'){
+            if(cho[i+1]=='-'){
+                cnt++;
+                i++;
+            }
+            else if(cho[i+1]=='z'){
+                if(cho[i+2]=='='){
+                    cnt++;
+                    i+=2;
+                }
+                else{
+                    cnt++;
+                }
+            }
+            else{
+                cnt++;
+            }
+        }
+        
+         else if(cho[i]=='n'){
+            if(cho[i+1]=='j'){
+                cnt++;
+                i++;
+            }
+            else{
+                cnt++;
+            }
+        }
+         else if(cho[i]=='s'){
+            if(cho[i+1]=='='){
+                cnt++;
+                i++;
+            }
+            else{
+                cnt++;
+            }
+        }
+         else if(cho[i]=='z'){
+            if(cho[i+1]=='='){
+                cnt++;
+                i++;
+            }
+            else{
+                cnt++;
+            }
+        }
+        else cnt++;
+    }
+    printf("%d", cnt);
+
+    return 0;
+}
