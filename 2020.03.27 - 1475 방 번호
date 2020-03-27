@@ -1,0 +1,25 @@
+#include<stdio.h>
+int main(){
+    int cho[10] = {0};
+    int i,N,cnt=0;
+
+    scanf("%d", &N);
+    if(N==0) cnt++;
+    else{
+        while(N){
+            cho[N%10]++;
+            N/=10;
+        
+        }
+        cnt = (cho[6]+cho[9]+1)/2;
+        for(i=0;i<9;i++){
+            if(i!=6&&i!=9){
+                if(cho[i]>cnt){
+                    cnt=cho[i];
+                }
+            }
+        
+        }
+    }
+    printf("%d", cnt);
+}
