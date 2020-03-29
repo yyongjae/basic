@@ -1,0 +1,37 @@
+#pragma warning(disable:4996)
+#include<stdio.h>
+int selfnum(void);
+int main() {
+	
+	selfnum();
+	
+	
+	return 0;
+
+}
+int selfnum(void) {
+	int i, sum=0;
+	int cho[10001] = { 0 };
+	int sn;
+	
+	for (i = 1;i<10000; i++) {
+		sn = i;
+		sum = 0;
+		sum += i;
+		while (1) {
+			if (sn < 1) break;
+			sum += sn % 10;
+			sn /= 10;
+		}
+		if(sum<=10000) cho[sum] = 1;
+
+	
+	}
+	for (i = 1; i < 10000; i++) {
+		if (cho[i] != 1) {
+			printf("%d\n", i);
+		}
+	}
+	return 0;
+	
+}
