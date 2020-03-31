@@ -1,0 +1,46 @@
+#pragma warning(disable:4996)
+#include<stdio.h>
+int main() {
+	int A, B, tmp=0;
+	int arr[3] = { 0 }, brr[3] = { 0 };
+	scanf("%d %d", &A, &B);
+
+	for (int i = 0; i < 3; i++) {
+		arr[i] = A % 10;
+		brr[i] = B % 10;
+		A /= 10;
+		B /= 10;
+
+	}
+	
+	
+	for (int i = 0; i < 3; i++) {
+		if (arr[i] == brr[i]) {
+			tmp=0;
+			
+		}
+		else if (arr[i] > brr[i]) {
+			tmp++;
+			break;
+		}
+		else if (arr[i] < brr[i]) {
+			tmp--;
+			break;
+		}
+	}
+	if (tmp > 0) {
+		for (int i = 0; i < 3; i++) {
+			printf("%d", arr[i]);
+		}
+		
+	}
+	else if (tmp < 0) {
+		for (int i = 0; i < 3; i++) {
+			printf("%d", brr[i]);
+		}
+
+	}
+	
+	return 0;
+
+}
