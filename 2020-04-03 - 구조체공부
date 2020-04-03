@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+typedef struct date{
+    int year;
+    int month;
+    int day; 
+} DT;
+int* select_min(DT *a, DT *b);
+int main(){
+    DT a,b,*c;
+    scanf("%d/%d/%d", &a.year, &a.month, &a.day);
+    scanf("%d/%d/%d", &b.year, &b.month, &b.day);
+
+    c=select_min(&a, &b);
+
+    printf("%d/%d/%d", (*c).year, (*c).month, (*c).day);
+
+    return 0;
+}
+struct select_min(DT *a, DT *b){
+   
+
+    if((*a).year>(*b).year)
+        return b;
+    
+    else if((*a).year<(*b).year)
+        return a;
+
+    else if((*a).year==(*b).year){
+
+        if((*a).month>(*b).month)
+            return b;
+        
+        else if((*a).month<(*b).month)
+            return a;
+
+        else if((*a).month==(*b).month){
+            
+            if((*a).day>(*b).day)
+                return b;
+        
+            else if((*a).day<(*b).day)
+                return a;
+        }
+    }
+
+   
+}
