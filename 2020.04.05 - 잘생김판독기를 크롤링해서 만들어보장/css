@@ -1,13 +1,14 @@
 body {
   font-family: sans-serif;
-  background-color: #eeeeee;
+  background-color: #ffffff;
 }
 
 .file-upload {
   background-color: #ffffff;
-  width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+	padding: 10% 0;
+ 
+	border-radius:10px;
+	border-color:#f6f7fa;
 }
 
 .file-upload-btn {
@@ -51,18 +52,25 @@ body {
   outline: none;
   opacity: 0;
   cursor: pointer;
+
 }
 
 .image-upload-wrap {
-  margin-top: 20px;
+ 
   border: 4px dashed #1FB264;
   position: relative;
+	object-fit:contain;
+	border-radius:10px;
+	border:dashed 1.5px #35465d;
+	background-color:#ffffff;
+	  width:60%;
+	margin: 0 auto;
 }
 
 .image-dropping,
 .image-upload-wrap:hover {
-  background-color: #1FB264;
-  border: 4px dashed #ffffff;
+  background-color: #35465d;
+  border: 1.5px dashed #ffffff;
 }
 
 .image-title-wrap {
@@ -86,6 +94,9 @@ body {
   max-width: 200px;
   margin: auto;
   padding: 20px;
+ 
+	
+
 }
 
 .remove-image {
@@ -113,4 +124,75 @@ body {
 .remove-image:active {
   border: 0;
   transition: all .2s ease;
+}
+
+.nav-distance {
+	padding : 2.1% 7.7%;
+	
+}
+.navbar-light .navbar-brand{
+	
+	font-family : NapumSquareR;
+
+	line-height : 1.68;
+	text-align : left;
+	color : #35465d;
+}
+.navbar-light .navbar-toggler{
+	border-color: #ffffff
+}
+.section{
+	margin-top : 100px;
+	
+}
+.title {
+	font-family: NanumSquareR;
+	line-height:1.67;
+	text-align:center;
+	color:#35465d;
+	
+}
+.subtitle{
+
+	font-family:NanumSquareR;
+	line-height:1.53;
+	text-align:center;
+	color: #35454d;
+}
+.github-icon{
+	width : 10rem;
+	height: 5rem;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size : 10px;
+  }
+	.navbar-brand{
+		font-size : 2rem;
+	}
+	.github-icon{
+	width : 10%;
+	height: 10%;
+
+	}
+	.github-link{
+		font-size:2rem;
+	}
+}
+.github-link{
+	font-size:1.5rem;
+	text-decoration:underline;
+	font-family:NanumSquareR;
+	line-height: 1.71;
+	text-align: center;
+	color:#f73737;
+}
+.github-link:hover{
+	font-size:1.5rem;
+	text-decoration:underline;
+	font-family:NanumSquareR;
+	line-height: 1.71;
+	text-align: center;
+	color:#f73737;
 }
