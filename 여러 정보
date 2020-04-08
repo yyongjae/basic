@@ -1,0 +1,6 @@
+codepen - 좋은 코드들을 가져다 쓸 수 있게 만든 사이트. 원하는 기능(image upload 등과 같이)을 검색해서 써라
+          주의사항) 맨 밑에 comment 누르면 밑에 license 내용이 나오는데 그걸 내 코드 아래에 걍 넣어주면 댐.
+bootstrap - 역시 Navbar와 같은 기능을 검색하면 관련 코드를 쓸 수 있다.
+Disqus - 댓글 기능 구현 코드를 가져다 쓸 수 있다.
+Netlify - 도메인을 일시적?으로 딸 수 있게 해주는 샅이.
+groom IDE - 개꿀
