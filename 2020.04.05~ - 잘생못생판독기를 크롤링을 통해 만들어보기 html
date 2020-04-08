@@ -40,23 +40,23 @@
             </ul>
         </div>
     </nav>
-	<section class="section">
-		<h1 class = "title">나는 욘애인? -남자편</h1>
-		<h2 class = "subtitle">못생겨도 슬퍼하지 말아요</h2>
-	</section>
-	<section class="github">
-	
-			<div class="github-cover  d-flex flex-row-reverse"><a href="https://github.com/dydwo706/Baekjoon-etc.." class="github-link">궁금믄온</a><img src="image/roka.jpg" alt="" class="github-icon"></div>
-		
-	</section>
-	
-	
-    <div>Teachable Machine Image Model</div>
-    <button type="button" onclick="init()">Start</button>
-    <button type="button" onclick="predict()">예측</button>
+    <section class="section">
+        <h1 class="title">나는 욘애인? -남자편</h1>
+        <h2 class="subtitle">못생겨도 슬퍼하지 말아요</h2>
+    </section>
+    <section class="github">
+
+        <div class="github-cover  d-flex flex-row-reverse">
+            <a href="https://github.com/dydwo706/Baekjoon-etc.." class="github-link">궁금믄온</a>
+            <img src="image/roka.jpg" alt="" class="github-icon">
+
+        </div>
+
+    </section>
+
     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <div class="container file-upload">
-        
+
         <div class="image-upload-wrap">
             <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
             <div class="drag-text">
@@ -65,6 +65,9 @@
         </div>
         <div class="file-upload-content">
             <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+            <p class="result-message"></p>
+
+            <div id="label-container"></div>
             <div class="image-title-wrap">
                 <button type="button" onclick="removeUpload()" class="remove-image">Remove
                     <span class="image-title">Uploaded Image</span>
@@ -73,9 +76,32 @@
         </div>
     </div>
     <div id="webcam-container"></div>
-    <div id="label-container"></div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script');
+            s.src = 'https://yongcho.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -92,6 +118,10 @@
                     $('.image-title').html(input.files[0].name);
                 };
                 reader.readAsDataURL(input.files[0]);
+                init().then(() => {
+                    console.log("hello");
+                    predict();
+                });
             } else {
                 removeUpload();
             }
@@ -140,6 +170,22 @@
             // predict can take in an image, video or canvas html element
             var image = document.getElementById("face-image")
             const prediction = await model.predict(image, false);
+            prediction.sort(function(a, b) {
+                return parseFloat(b.probability) - parseFloat(a.probability);
+            });
+            console.log(prediction[0].className);
+            var resultMessege;
+            switch (prediction[0].className) {
+                case "Handsome":
+                    resultMessege = "잘생겼노"
+                    break;
+                case "ugly":
+                    resultMessege = "공부잘하겠노"
+                    break;
+                default:
+                    resultMessege = "?"
+            }
+            $('.result-message').html(resultMessege)
             for (let i = 0; i < maxPredictions; i++) {
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
