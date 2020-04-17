@@ -1,0 +1,39 @@
+#include<stdio.h>
+#define yong(x,y) x<y ? x: y
+int main(){
+    int m,n;
+    char cho[50][50];
+    int cntw=0, cntb=0, cntsave=80;
+    scanf("%d %d", &m,&n);
+
+    
+    for(int j=0;j<n;j++)
+        scanf("%s", &cho[j]);
+    
+
+     for(int i=0;i<m-7;i++){
+        for(int j=0;j<n-7;j++){
+            for(int a=i;a<i+8;a++){
+                for(int b=j;b<j+8;b++){
+                    if((a+b)%2==0){
+                        if(cho[a][b]=='B') cntb++;
+                        else  cntw++;
+                    }
+                    else{
+                        if(cho[a][b]=='W') cntb++;
+                        else  cntw++;
+                    }
+                }
+            
+            }
+            cntsave=yong(cntsave, cntb);
+            cntsave=yong(cntsave, cntw);
+            cntb,cntw=0;
+            
+        }
+
+    }
+   printf("%d", cntsave);
+    return 0;
+
+}
