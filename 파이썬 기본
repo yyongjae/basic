@@ -1,0 +1,67 @@
+1. //가 몫을 구하는 것
+2. input()을 해야 입력할 수 있음. 하지만 이는 문자열이기 때문에 int(input())을 해야 숫자로ㅇㅇ
+   print("%d %s %d" %(1, 'str', 3))형식으로 ㅇ
+3. 조건문 
+   if ___:
+      _____   (기본)
+   elif ___ and/or ___:
+      _____
+   elif not ___:
+      _____
+   else :
+      _____
+      
+4. 함수
+   def ___(인자):
+       _____
+   
+   def ____(__,__,__):
+       _____
+       return _
+       
+5. 반복문
+  5-1. while ____:    -> 실행한 조건 or True
+           ___
+           ___  (변수에 대한 증감 조건해줘야함)
+  5-2. for i in range(종료값):
+          ____
+       for i in list:
+          ____
+       for i in range(시작, 종료, 증감)
+          ___   
+          
+       for i in range(3):
+           if i>2:
+              break           ->끝내기
+           elif i<2:
+              continue       -> 해당 위치에서 끝내고 다시 반복
+           else :
+              ___
+             
+6. 리스트
+
+x=[1,2,3]
+y=['아앙', '잉', 5,6]
+x+y 같은 연산 ㄱㄴ
+x[1]=4 와 같이 값변환 ㄱㄴ
+len(x) - 길이
+sort(x) - 영구 정렬, 리턴값 none /// y=sorted(x)는 임시로 x를 정렬한 값을  y에 저장
+sum(x) -  합
+for n in x:
+   print(n)    -> x리스트 값을 n에 담아
+   
+7. 튜플
+
+ 리스트랑 같음 차이점은 x =(1,2,3) 과 같이 괄호
+ 그리고 튜플은 값 변환이 안돼
+ 
+8. dictionary
+ 
+ x={
+    "name" : "cho",
+    0 : 20,
+    1 : 30,
+    }
+ print(x["name"])
+ print(x[0])
+ print(x) 
