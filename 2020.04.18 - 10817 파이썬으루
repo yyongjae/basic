@@ -1,0 +1,14 @@
+x=map(int,input().split())
+x.sort()
+print(x[1])
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+x=map(int,input().split())
+
+y=sorted(x)
+
+print(y[1])
+
+이 둘의 차이점이 뭘까????
+전자는 런타임에러고 후자는 정답,,
