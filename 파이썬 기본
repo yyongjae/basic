@@ -27,9 +27,11 @@
            ___  (변수에 대한 증감 조건해줘야함)
   5-2. for i in range(종료값):
           ____
+       for i in reversed(range(1,7)):   ->하면 6에서 1까지 감소하는 i를 얻을 수 잇다.
+          ____                    
        for i in list:
           ____
-       for i in range(시작, 종료, 증감)
+       for i in range(시작, 종료, +-증감)
           ___   
           
        for i in range(3):
