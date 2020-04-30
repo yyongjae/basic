@@ -1,0 +1,48 @@
+alist=[0,0,0,0,0]
+for i in range(5):
+	alist[i]=int(input())
+	if alist[i] < 40:
+		alist[i]=40
+avg=int(sum(alist)/5)
+print(avg)
+================================
+a=3000                   -5543 min 사용
+b=3000
+for i in range(3):
+    x=int(input())
+    a=min(a,x)
+
+for i in range(2):
+    y=int(input())
+    b=min(b,y)
+
+print(a+b-50)
+--------------------------
+ham=[0]*3              -5543 일일이 계산
+drink=[0]*2
+
+for i in range(3):
+    ham[i]=int(input())
+for i in range(2):
+    drink[i]=int(input())
+for i in range(3):
+    if i==0:
+        flag=ham[i]
+    if flag>ham[i]:
+        flag=ham[i]
+flag2=drink[0]
+if flag2>drink[1]:
+    flag2=drink[1]
+
+print(flag+flag2-50)
+
+===================================
+x=int(input())
+
+for i in range(x):
+    if x%2!=0:
+        print('* '*(x//2+1))
+        print(' *'*(x//2))
+    else :
+        print('* '*(x//2))
+        print(' *'*(x//2))
