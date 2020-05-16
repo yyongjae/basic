@@ -63,6 +63,12 @@ for n in x:
  리스트랑 같음 차이점은 x =(1,2,3) 과 같이 괄호
  그리고 튜플은 값 변환이 안돼
  
+ 이중배열과 같은 형태 래스끼릿!
+ ex__   list1=[1,2]
+        list2=[3,4]
+        tuple = (list1, list2)
+        print(tuple)  --->     ([1,2], [3,4]) ㅇㅋ
+ 
 8. dictionary
  
  x={
