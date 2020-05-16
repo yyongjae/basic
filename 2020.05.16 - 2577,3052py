@@ -1,0 +1,23 @@
+a=int(input())
+b=int(input())
+c=int(input())
+mul=a*b*c
+cho=[0]*10
+while mul>=1:
+    cho[int(mul%10)]+=1
+    mul//=10
+
+for i in range(10):
+    print(cho[i])
+    
+    
+  -------------------------
+  cho=[0]*42
+cnt=0
+for i in range (10):
+    x=int(input())
+    if cho[int(x%42)]==0:
+        cnt+=1
+    cho[int(x%42)]=+1
+
+print(cnt)
