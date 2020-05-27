@@ -1,10 +1,10 @@
 c = int(input())
 
-for i in range (5):
+for i in range (c):
     cho = list(map(int, input().split()))
     avg = float(sum(cho[1:]))/float(cho[0])
     cnt=0
     for j in cho[1:]:
-        if j < avg:
+        if j > avg:
             cnt+=1
-    print(%.3f%%, %round(float(100*cnt)/float(cho[0]),3 ) )
+    print('%.3f%%' %round(float(100*cnt)/float(cho[0]),3 ) )
