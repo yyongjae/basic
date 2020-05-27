@@ -1,0 +1,12 @@
+n = int(input())
+
+cho = list(map(float, input().split()))
+
+M = max(cho)
+
+for i in range(n):
+    cho[i] = cho[i]/M*100
+
+avg = float(sum(cho))/float(n)
+
+print(avg)
