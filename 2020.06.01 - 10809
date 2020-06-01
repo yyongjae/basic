@@ -1,0 +1,20 @@
+S=str(input())
+ch='abcdefghijklmnopqrstuvwxyz'
+slist=[]
+chlist=[]
+for i in S:
+    slist.append(i)
+for i in ch:
+    chlist.append(i)
+for j in range (len(chlist)):
+    cnt=0
+    for i in range(len(slist)):
+        if slist[i]==chlist[j]:
+            print(i,end=' ')
+            break
+        else :
+            cnt+=1
+    if cnt==len(slist):
+        print(-1,end=' ')
+    
+    
