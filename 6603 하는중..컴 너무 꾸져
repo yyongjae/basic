@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int lotto(int *a, int cnt)
+int cos(int q, int w);
+int main(void) {
+	int x[14], cnt;
+	
+	for(int i=0;;i++){
+		scanf("%d", &x[i]);
+		if(x[i]==0) break;
+		
+		for (int j=1;j<x[0];j++)
+			scanf("%d ", &x[j]);
+		cnt=0;
+		
+		
+	}
+	
+	return 0;
+}
+int cos(int q,int w){
+	int a=1,b=0,f=1;
+	if((q-w)<w) w=(q-w);
+	
+	while(1){
+		if(b==w) break;
+		a*=(q-b);
+		b++;
+	}
+	while(1){
+		if(w==0) break;
+		f*=w;
+		w--;
+	}
+	
+	return a/w;
+}
+int lotto(int *a, int cnt){
+
+	
+	if (cnt==cos(a[0])){
+		for (int il)
+	}
+}
