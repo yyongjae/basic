@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include<stdlib.h>
+int main(void) {
+	int flagx=0,flagy=0,flagxback=0, flagyback=0;
+	int spiral[100][100];
+	int n,m;
+	int cnt=1, check=1;
+	int i=0, j=0;
+	
+	scanf("%d %d", &n, &m);
+	flagxback=n-1, flagyback=m-1;
+	
+	while(1){
+		if(cnt==n*m) break;
+		
+		if(check%4==1){
+			for(i=flagx;i<=flagxback;i++){
+				if(spiral[i][j]!=NULL){
+					flagy++;;
+					break;
+				}
+				spiral[i][j]=cnt;
+				cnt++;
+			}
+			flagy++;
+		}
+		else if(check%4==2){
+			for(j=flagy;j<=flagyback;j++){
+				if(spiral[i][j]!=NULL){
+					flagxback--;
+					break;
+				}
+				spiral[i][j]=cnt;
+				cnt++;
+			}
+			flagxback--;
+		}
+		else if(check%4==3){
+			for(i=flagxback;i>=flagx;i--){
+				if(spiral[i][j]!=NULL){
+					flagyback--;
+					break;
+				}
+				spiral[i][j]=cnt;
+				cnt++;
+			}
+			flagyback--;
+		}
+		else if(check%4==0){
+			for(j=flagyback;j>=flagy;j--){
+				if(spiral[i][j]!=NULL){
+					flagx++;
+					break;
+				}
+				spiral[i][j]=cnt;
+				cnt++;
+			}
+			flagx++;
+		}
+		check++;
+		
+	}
+	for(i=0;i<n;i++){
+		for(j=0;j<m;j++){
+			printf("%d ", spiral[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
