@@ -8,12 +8,15 @@
    print(' ' + '*')  같이 가운데 +를 사용하면 연속으로 출력할 수 있다.
    print(' ', '*')   같이 사용하면 공백이 두번 연속 생기기 때문에 주의!
    
--> <함수s>
+-> <함수, method>
    x=map(a,b)       - b에 대해 a를 진행한다 ex) x=map(int,input() ) 입력값을 int
    round(실수,n)     - 소수점 n번째 자리까지만 표현
                     - n자리에 음수를 넣으면 정수자리에서 반올림ㄱㄴ
                     - 
-    
+   address.strip()     - strip()은  ex) address = ' 아 전역하고 싶다 ' 일 때 앞 뒤 공백을 없애줌
+   address.split()     - split()은  공백을 기준으로 문자열을 분리 시킨다. ex) ['아','전역하고','싶다']
+   address.startswith("아") - 얘는 괄호 안의 문자가 해당 문자열에 있는지 확인 답은 True
+   " ".join(list)      - 리스트 값들 사이에 공백이 있는 문자열로 만들 수 있다.
 3. 조건문 
    if ___:
       _____   (기본)
@@ -52,6 +55,9 @@
               continue       -> 해당 위치에서 끝내고 다시 반복
            else :
               ___
+              
+        for i,val in enumerate(list):
+            print(i,val)        하면 해당 원소의 번호와 원소값을 동시에 배출!
              
 6. 리스트
 
@@ -64,7 +70,8 @@ sort(x) - 영구 정렬, 리턴값 none /// y=sorted(x)는 임시로 x를 정렬
 sum(x) -  합
 for n in x:
    print(n)    -> x리스트 값을 n에 담아
-   
+list[-1] 하면 맨 마지막 문자를 가져온다.
+
 7. 튜플
 
  리스트랑 같음 차이점은 x =(1,2,3) 과 같이 괄호
