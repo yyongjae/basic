@@ -1,0 +1,72 @@
+#pragma warning(disable: 4996)
+#include <stdio.h>
+#include<stdlib.h>
+int main() {
+	int flagx = 0, flagy = 0, flagxback = 0, flagyback = 0;
+	int spiral[100][100] = {0};
+	int n, m;
+	int cnt = 1, check = 0;
+	int i = 0, j = 0;
+
+	scanf("%d %d", &n, &m);
+	flagxback = n - 1, flagyback = m - 1;
+
+	while (1) {
+		check++;
+		if (cnt > n * m) break;
+
+		if (check % 4 == 1) {
+			for (i = flagx; i <= flagxback; i++) {
+				if (spiral[j][i] != 0) {
+					flagy++;;
+					break;
+				}
+				spiral[j][i] = cnt;
+				cnt++;
+			}
+			flagy++,i--;
+		}
+		else if (check % 4 == 2) {
+			for (j = flagy; j <= flagyback; j++) {
+				if (spiral[j][i] != 0) {
+					flagxback--;
+					break;
+				}
+				spiral[j][i] = cnt;
+				cnt++;
+			}
+			flagxback--,j--;
+		}
+		else if (check % 4 == 3) {
+			for (i = flagxback; i >= flagx; i--) {
+				if (spiral[j][i] != 0) {
+					flagyback--;
+					break;
+				}
+				spiral[j][i] = cnt;
+				cnt++;
+			}
+			flagyback--,i++;
+		}
+		else if (check % 4 == 0) {
+			for (j = flagyback; j >= flagy; j--) {
+				if (spiral[j][i] != 0) {
+					flagx++;
+					break;
+				}
+				spiral[j][i] = cnt;
+				cnt++;
+			}
+			flagx++,j++;
+		}
+		
+
+	}
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < m; j++) {
+			printf("%d ", spiral[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
