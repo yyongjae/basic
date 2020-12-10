@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+int size(int A[10]);
+int get(int A[10], int r);
+int set(int A[10], int r, int e);
+void add(int A[10], int r, int e);
+int removes(int A[10], int r);
+int main() {
+  int A[10]={'\n',}, r, e;
+  char *w;
+ 
+  while(1){
+    scanf("%s", w);
+
+    if (strcmp(w,"size")==0){
+      size(A);
+    }
+    else if(strcmp(w,"get")==0){
+      scanf("%d", &r);
+      if(r<0||r>=10) printf("invalidRankException");
+      else get(A,r);
+    }
+    else if(strcmp(w,"set")==0){
+      scanf("%d %d", &r, &e);
+      if(r<0||r>=10) printf("invalidRankException");
+      else set(A,r,e);
+    }
+    else if(strcmp(w,"add")==0){
+      scanf("%d %d", &r, &e);
+      if(r<0||r>=10) printf("invalidRankException");
+      else add(A,r,e);
+    }
+    else if(strcmp(w,"removes")==0){
+      scanf("%d", &r);
+      if(r<0||r>=10) printf("invalidRankException");
+      else removes(A,r);
+    }
+  }
+
+  
+  return 0;
+}
+int size(int A[10]){
+  int f,l,check;
+  
+  for(int i=0;i<10;i++){
+    if(A[i]!='\n')  
+  }
+  return 
+}
