@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS  
+#include<stdio.h>
+void star(int n,int flag, char** s);
+int main() {
+	int N;
+	char s[100][100];
+
+	scanf_s("%d", &N);
+	
+	star(N,N,s);
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < N; j++) {
+			printf("%c", s[i][j]);
+		}
+		printf("\n");
+	}
+	
+	return 0;
+
+
+}
+void star(int n, int flag, char** s){
+
+	if (n < 1) return;
+	star(n / 3,flag, s);
+
+	for (int i = 0; i < flag; i++) {
+		for (int j = 0; j < flag; j++) {
+			if ((i / n) % 3 == 1 && (j / n) % 3 == 1) s[i][j] = ' ';
+			else s[i][j] = '*';
+		}
+	}
+}
