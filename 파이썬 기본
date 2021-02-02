@@ -1,11 +1,15 @@
 0. 문자열 표현 : '' "" """ """
-
+   and &
+   or |
+   ++ -- 기호 못써
+   
    "i eat %d apples", %3  _ 이렇게 편하게 작성할 수도 있엉. 값이 여러개면 %(3,4)이런식
    "one means {num } hello means {kor} yeah~" .format(kor="안녕", num="1") _ 이러면 괄호사이에 문자가 들어감.
    
    소수점 몇번째 자리까지~  _ %0.4f   
    앞 몇칸 띄우고 글자출력  _ %10s
    
+   print(end=" ") -> 다음에 print하는 내용을 다음줄로 넘기지 않고 이어서 쓰게 함
 1. //가 몫을 구하는 것
 2. *input()을 해야 입력할 수 있음. 하지만 이는 문자열이기 때문에 int(input())을 해야 숫자로ㅇㅇ
     print("%d %s %d" %(1, 'str', 3))형식으로 ㅇ
@@ -16,15 +20,20 @@
    print(' ' + '*')  같이 가운데 +를 사용하면 연속으로 출력할 수 있다.
    print(' ', '*')   같이 사용하면 공백이 두번 연속 생기기 때문에 주의!
    
--> <함수, method>
-   x=map(a,b)       - b에 대해 a를 진행한다 ex) x=map(int,input() ) 입력값을 int
-   round(실수,n)     - 소수점 n번째 자리까지만 표현
-                    - n자리에 음수를 넣으면 정수자리에서 반올림ㄱㄴ
-                    - 
-   address.strip()     - strip()은  ex) address = ' 아 전역하고 싶다 ' 일 때 앞 뒤 공백을 없애줌
-   address.split()     - split()은  공백을 기준으로 문자열을 분리 시킨다. ex) ['아','전역하고','싶다']
-   address.startswith("아") - 얘는 괄호 안의 문자가 해당 문자열에 있는지 확인 답은 True
-   " ".join(list)      - 리스트 값들 사이에 공백이 있는 문자열로 만들 수 있다.
+  * 변수, 주소, 할당
+    
+    a=[1,2,3]
+    b=a  -> b에 a의 주소를 할당한 것이여서 a의 값을 바꾸면 b의 값도 바뀜
+    
+    b=a[:]  -> b에 a의 값을 할당했기에 a의 값을 바꿔도 b의 값은 바뀌지 않음. id(a) id(b)를 출력해보면 주소가 다른 것을 확인.
+    
+    또 from copy import copy를 통해 라이브러리를 추가하면
+    b=copy(a)하면 이 또한 a의 값을 할당한다. 대신 같은 주소를 공유하는 것이 아니라 새로운 주소에 단지 a의 값만 갖다 붙힌 것.
+    
+    -할당 : a,b = ('abc', 'def')
+          [a,b] = ['1','2']
+           a = b = '1'
+           a,b=b,a 처럼 tmp를 이용한 값변환처럼 사용 가능 
 3. 조건문 
    if ___:
       _____   (기본)
@@ -34,7 +43,11 @@
       _____
    else :
       _____
-      
+   
+   *조건부 표현식 : true일 때 조건을 먼저 입력해 놓고 조건식에서 false가 나오면 바꿔준다
+    ㄴ a = 1 if b < 0 else 2 -> b가 음수면 a가 2가 되는 거임.
+    
+    
 4. 함수 - 함수에 input 이나 output이 없을 수도 있다. 전자의 경우엔 def 옆에 인자가 비어있는 것이고 후자의 경우는 출력값이 none이라고 뜸. 
    def ___(인자):
        _____
@@ -63,8 +76,12 @@
        for i in list:
           ____
        for i in range(시작, 종료, +-증감)
-          ___   
+          ___  
           
+       a = [(1,2), (3,4), (5,6)]
+       for (first, last) in a:
+           print(first last)    -> 와 같이 리스트 속의 튜플을 이용할 수 도 있다.
+           
        for i in range(3):
            if i>2:
               break           ->끝내기
@@ -76,6 +93,11 @@
         for i,val in enumerate(list):
             print(i,val)        하면 해당 원소의 번호와 원소값을 동시에 배출!
              
+        (1)result = [x*y for x in range(2,10) for y in range(1,10)]
+        (2)result = []
+           for x in range(2,10):
+              for y in range(1,10):
+                 result.append(x*y)    -> 1번 식과 2번식은 같은 의미.
 6. 리스트
 
 x=[1,2,3]
@@ -98,8 +120,9 @@ list[-1] 하면 맨 마지막 문자를 가져온다.
              
 7. 튜플
 
- 리스트랑 같음 차이점은 x =(1,2,3) 과 같이 괄호
- 그리고 튜플은 값 변환이 안돼
+ - 리스트랑 같음 차이점은 x =(1,2,3) 과 같이 괄호
+ - 변환x
+ 
  
  이중배열과 같은 형태 래스끼릿!
  ex__   list1=[1,2]
@@ -108,8 +131,10 @@ list[-1] 하면 맨 마지막 문자를 가져온다.
         print(tuple)  --->     ([1,2], [3,4]) ㅇㅋ
  
 8. dictionary _ 다른 언어의 hash, map, json과 같은 역할. 
-8. dictionary _ 다른 언어의 hash, map, json과 같은 역할.
- key를 통해서 value
+
+ -key를 통해서 value를 얻는다!
+ 
+ x {
     "name" : "cho",
     0 : 20,
     1 : 30,
@@ -118,8 +143,49 @@ list[-1] 하면 맨 마지막 문자를 가져온다.
  print(x[0])
  print(x) 
  
+ x['age'] = 3 이렇게 쓰면 값을 추가할 수 있다.
  
- 9. 함수 메소드
+ *dictionary 함수들
+ -keys() _ 키값만 출력
+ -values() _ value들만 출력
+ -items() _ 키랑 벨류 쌍으로 묶어서 전체 출력
+   위 함수들은 반복문에서 range 자리에 넣을 수 있다.
+ -clear() _ 초기화
+ -get() _ x[1]와 같으나 없는 값을 return하면 x[5]는 에러가 뜨고 get(5)은 None을 return한다.
+ 
+ 
+ 
+ 9. 집합
+
+ -중복x
+ -순서x
+ -데이터를 다룰 때 쓰임. ex_ 중복된 값이 많은 리스트를 set으로 묶고 다시 s2 = list(set(s1))같이 표현하면 중복된 값이 사라진 리스트로 변환된다.
+  
+ -표현 : s1 = set([1,2,3]) or {1,2,3} or set("hello") 
+ 
+        s2 = set{3,4,5}
+        
+        교집합 : print(s1&s2) or print(s1.intersection(s2)) -> 3
+        합집합 : print생략 s1 | s2 or s1.union(s2)
+        차집합 : s1 - s2 or difference()
+        추가, 여러개 추가 : add(9), update([7,8,9]) _ return X
+        제거 : remove()
+ 
+ 
+ 10. boolean
+ 
+    - 참과 거짓
+    - "abc" : 참
+      "",'' : 거짓
+      [1,2] : 참
+      [],(),{} : 거짓
+      1 : 참
+      0 : 거짓
+      True : 참
+      False : 거짓
+      ㄴ 얘네를 조건문의 조건에 쓰면 참 거짓으로 나뉘어서 반복문 실행 가능 
+ 
+ 99. 함수 메소드
   
    * count(a) _ 문자열 안에 a의 개수를 세
    * find(a) _ 가장 앞엥 있는 a의 위치. 없으면 -1
@@ -135,3 +201,7 @@ list[-1] 하면 맨 마지막 문자를 가져온다.
    * remove(1) _ 1이라는 값을 제거
    * pop() - 마지막 놈을 내보내
    * extend(1,2,3) _ 마지막에 추가
+   * address.strip() _ strip()은  ex) address = ' 아 전역하고 싶다 ' 일 때 앞 뒤 공백을 없애줌
+   * map(a,b)       - b에 대해 a를 진행한다 ex) x=map(int,input() ) 입력값을 int
+   * round(실수,n)     - 소수점 n번째 자리까지만 표현
+                    - n자리에 음수를 넣으면 정수자리에서 반올림ㄱㄴ
