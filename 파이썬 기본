@@ -9,12 +9,23 @@
    소수점 몇번째 자리까지~  _ %0.4f   
    앞 몇칸 띄우고 글자출력  _ %10s
    
-   print(end=" ") -> 다음에 print하는 내용을 다음줄로 넘기지 않고 이어서 쓰게 함
-1. //가 몫을 구하는 것
-2. *input()을 해야 입력할 수 있음. 하지만 이는 문자열이기 때문에 int(input())을 해야 숫자로ㅇㅇ
-    print("%d %s %d" %(1, 'str', 3))형식으로 ㅇ
    
-   *print('%d%%'%a) 처럼 ''안에 %d, %f와 같이 %연산자가 쓰였으면 뒤에 또 %가 쓰일 때 %%두번 해줘야함.ex 백준4344
+   
+   
+   
+1. //가 몫을 구하는 것
+
+
+2. 입출력
+
+   * input()을 해야 입력할 수 있음. 하지만 이는 문자열이기 때문에 int(input())을 해야 숫자로ㅇㅇ
+     print("%d %s %d" %(1, 'str', 3))형식으로 ㅇ
+   
+   * print('%d%%'%a) 처럼 ''안에 %d, %f와 같이 %연산자가 쓰였으면 뒤에 또 %가 쓰일 때 %%두번 해줘야함.ex 백준4344
+   
+   * print()안에 "ㅁ" "ㅂ"이렇게 쓰면 ㅁㅂ로 사이에 ,를 넣으면 띄어쓰기해서 나옴.
+   
+   * print(end=" ") -> 다음에 print하는 내용을 다음줄로 넘기지 않고 이어서 쓰게 함
    
    ex) 별찍기
    print(' ' + '*')  같이 가운데 +를 사용하면 연속으로 출력할 수 있다.
@@ -56,7 +67,7 @@
        _____
        return _
        
-   **몇개의 인자를 넣을지 미정인 상태면 
+   * 몇개의 인자를 넣을지 미정인 상태면 
      def sum_all (*args):
          sum =0
          for i in args:
@@ -64,6 +75,53 @@
          return sum
      print(sum_all(1,2,3))
      이와 같이 *args라는 표현을 써서 정해지지 않은 여러 수를 입력 받을 수 있다. (굳이 args표현을 안 써도 되지만 통용되는 표현이다.)
+     
+     
+    * keywords parameter
+      
+      def print_kwargs(**kwargs):
+          for k in kwargs.keys():
+              if (k=='name'):
+                 print("당신의 이름은 :" + k)
+     print(print_kwargs(name="int 조수", b="2"))    ->    dictionary 개념과 비슷하게 key와 value를 조합해서 사용하는 방법도 있다.
+     
+     
+    * 함수의 결과 값은 하나.
+     
+      def func(a,b):
+         return a+b, a-b, a*b
+      print(func(1,2))              ->   return 값을 여러개 설정하면 출력을 튜플 형태로 한다. ex) (3,-1,2)로 나오기 떄문에 특정 값만 출력하고 싶으면 func(1,2)[1]형태로 ㄱ
+      
+      
+    * 인자 미리 선언.
+    
+     인자를 예를 들어 def func(a,b=True): 와 같은 형식으로 쓴다면 함수를 호출할 때 func(1)만 해줘도 실행이 된다. 
+     단 func(1, False)같이 호출하면 b는 True가 아닌 False로 입력을 받음.
+     미리 선언하려면 인자들 중 마지막 자리에 넣어주기.
+     
+     
+    * 응애 나 애기 인자.
+    
+      def func (a,b,c): 처럼 인자가 여러개일 경우 호출할 떄 func(a=12,c='응애',b=3)처럼 호출하면 순서 신경 안 써도.
+     
+     
+    * 지역변수의 전역화
+    
+      함수 밖에서 선언된 a라는 변수를 함수 안에서도 효력이 있게 만들고 싶으면 함수 안에서 global a라고 선언 해주라!
+      
+      
+    * 쩌는 Lambda 함수
+    
+      def add(a,b): return a+b 라는 함수는
+      add = lambda a,b: a+b
+      print(add(1,2))  로 나타낼 수 있다.
+      
+      또!
+      
+      list = [lambda a,b:a+b, lambda a,b:a-b]처럼 리스트 안에 함수를 명령할 수 있다. 원래 저 자리에 def add이런거 쓸 수 없음.
+      호출도 list[0](1,2) 이런 식으로 하면 댐. 기머링
+      
+      
      
 5. 반복문
   5-1. while ____:    -> 실행한 조건 or True
@@ -185,6 +243,46 @@ list[-1] 하면 맨 마지막 문자를 가져온다.
       False : 거짓
       ㄴ 얘네를 조건문의 조건에 쓰면 참 거짓으로 나뉘어서 반복문 실행 가능 
  
+ 
+ 11. 파일
+ 
+   * 생성삭제
+     f = open("주소/이름.txt", 'w / r / a')  => r은 읽기모드 w은 새로쓰기 a는 파일 마지막에 내용추가
+     f.close
+     
+     ex)
+     f = open("직박구리.txt", 'w', encoding="UTF-8")    ->한글 안깨지게 하려고
+     for i in range(1,5):
+        data = "%d번째 줄입니다. \n" %i
+        f.write(data)
+     f.close
+     
+     
+     f = open("직박구리.txt", 'r')
+     while True:
+       line = f.readline()                                  ** readline-> 한줄씩 읽어오는 함수
+       if not line: break
+       print(line)
+     f.close
+     
+     or
+     
+     lines = f.readlines() 해주고 lines를 for문 돌려줘도 ㅇㅋ     ** readlines -> 리스트 형태로 가져와서 읽어보리기
+     
+     or
+     
+     data = f.read()                                        ** read -> 통째로 읽는다
+     print(data)  도 ㅇㅋ
+     
+   * with문
+   
+     with open("딱다구리.txt". "w") as f:
+        f.write("아무얘기나해봐")
+    
+     이렇게 쓰면 f.close 안해줘도 된다 이거야.
+     
+     
+     
  99. 함수 메소드
   
    * count(a) _ 문자열 안에 a의 개수를 세
