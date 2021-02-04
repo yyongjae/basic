@@ -21,6 +21,9 @@
    * input()을 해야 입력할 수 있음. 하지만 이는 문자열이기 때문에 int(input())을 해야 숫자로ㅇㅇ
      print("%d %s %d" %(1, 'str', 3))형식으로 ㅇ
    
+   * 리스트 입력 시 
+     mylist = list(map(int,input().split())) 이와 같이 사용하면 된다.
+     
    * print('%d%%'%a) 처럼 ''안에 %d, %f와 같이 %연산자가 쓰였으면 뒤에 또 %가 쓰일 때 %%두번 해줘야함.ex 백준4344
    
    * print()안에 "ㅁ" "ㅂ"이렇게 쓰면 ㅁㅂ로 사이에 ,를 넣으면 띄어쓰기해서 나옴.
@@ -156,6 +159,10 @@
            for x in range(2,10):
               for y in range(1,10):
                  result.append(x*y)    -> 1번 식과 2번식은 같은 의미.
+                 
+                 
+                 
+                 
 6. 리스트
 
 x=[1,2,3]
@@ -175,7 +182,9 @@ list[-1] 하면 맨 마지막 문자를 가져온다.
          ex) a=['a', 'b', 'c']
              a[0:1] = ['d','e']
              -> d,e,c
-             
+           
+           
+           
 7. 튜플
 
  - 리스트랑 같음 차이점은 x =(1,2,3) 과 같이 괄호
@@ -187,6 +196,8 @@ list[-1] 하면 맨 마지막 문자를 가져온다.
         list2=[3,4]
         tuple = (list1, list2)
         print(tuple)  --->     ([1,2], [3,4]) ㅇㅋ
+ 
+ 
  
 8. dictionary _ 다른 언어의 hash, map, json과 같은 역할. 
 
@@ -281,8 +292,35 @@ list[-1] 하면 맨 마지막 문자를 가져온다.
     
      이렇게 쓰면 f.close 안해줘도 된다 이거야.
      
+ 
+ 12. CLASS
+ 
+   - 일종의 설계도라고 생각하자. 쿠기모양 잡는 틀 같은 것.
+   - 안에 함수를 넣으면서 구조체 느낌이로다가~
+   
+   * ex)
+     class FourCal: 
+        def setdata(self, first, second):            -> self는 밑에서 a로 class를 호출할 때 a에 대응해주는 인자이다.
+           self.first = first
+           self.second = second
+        def add(self):                               -> 같은 class안에서는 인자가 통용된다.
+           result = self.fist + self.second
+           return result
      
+     a = FourCal()                                   -> class 호출
+     a.setdata(4,2)                                  -> a는 self에 4는 first 2는 second에 대응
+     print(a.add())                                  -> 이미 class안에서 first와 second이 할당되었기에 또 입력해줄 필요가 없다.
+
+
+     - 언_더_바 -
      
+     여기서 class 안에 def __init__(self, first, second):
+                       self.first = first
+                       self.second = second
+     이런 식으로 __  __ 언더바를 이용해서 함수를 선언하면   a = FourCal() 처럼 class를 호출할 때 호출과 동시에 해당 함수가 실행이 되게 한다.
+     따라서 a = FourCal()은 인자가 없기 때문에 오류가 나고 a = FourCal(4,2) 처럼 입력을 해주어야한다. 이렇게 되면 setdata함수는 불필요.
+     
+
  99. 함수 메소드
   
    * count(a) _ 문자열 안에 a의 개수를 세
@@ -295,8 +333,8 @@ list[-1] 하면 맨 마지막 문자를 가져온다.
    * append() _ 추가
    * sort() _ 정렬 ㄱㄴㄷ 123 abc 순으로
    * reverse() _ 뒤집기
-   * insert(1,3) _ 1번쨰 인덱스에 3을 넣어라
-   * remove(1) _ 1이라는 값을 제거
+   * insert(1,3) _ 1번쨰 인덱스에 3을 넣어라 
+   * remove(1) _ 1이라는 값을 제거d
    * pop() - 마지막 놈을 내보내
    * extend(1,2,3) _ 마지막에 추가
    * address.strip() _ strip()은  ex) address = ' 아 전역하고 싶다 ' 일 때 앞 뒤 공백을 없애줌
