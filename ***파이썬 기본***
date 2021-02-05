@@ -353,14 +353,52 @@
    
        * 예외 상황
        
-       1) 끌어다 
-       * 예외 상황쓰려
+       1) 끌어다 쓰려는 a1파일에서 print로 출력되는 값이 있다. - b2파일에서 import하면 a1에서 출력되는 값이 같이 출력되기 때문에 
+                                                      a1에서  if __name__ == "__main__":
+                                                                print(add(1,2))     와 같이 조건을 걸어두면서 타개.
+                                                      이게 a1란 파일에서 디버깅을 하면 그 파일 자체가 main파일이 되는 건데
+                                                      b2파일에서 a1을 import해서 쓰면 b2가 main이 되고 a1은 그냥 a1인 것이다.
+       
+       2) a1.py가 같은 헤더 파일 안에 있는 것이 아니라 a1은 A b2는 B라는 파일에 있다. - import sys
+                                                                          sys.path.append("A<원하는 파일이 있는 파일의 주소>")
+                                                                          import a1
+                                                                          로 해결할 수 있담.!
    
    
+   
+ 14. Package
+ 
+   - 모듈과 비슷한 느낌
+   - 하지만 나는 무더기다..!
+   
+   ex) A라는 파일에 a 와 b.py라는 파일이 있고 다시 a에는 a'와 a''라는 파일이 그리고 각각의 파일에는 a'`.py 와 a''`.py라는 파일이 있다.
+       여기서 b.py에 import a.a'.a'` 나  from a.a' import a'` 깉은 형식으로 import를 할 수 있다.
+       from a.a'.a'` import a'`.add 와 같이 함수만 따로 불러오는 것도 ㄱㄴ.
+       
+       만약 a'`.py에서 a''`.py에 있는 함수를 가져다 쓰고 싶으면
+       from ..a''.a''` import a''`.add  이렇게 하면 된다
+       일반적으로 .. 은 이전 폴더를 의미한다.
+       
+ 15. handle Error
+ 
+   - ex)
+     try :                                        -> 오류가 날 가능성이 있는 명령어를 입력
+       f = opne('none', 'r')                      -> 존재x
+       
+     except FileNotFoundError as e:               -> 오류명을 e에 담아서 출력
+       print(str(e))
+       
+     else:                                        -> try 구문에서 오류가 안났을 경우 실행
+       data = f.read()
+       print(data)
+     
+     finally:                                     -> 위에서 뭔 난리를 치던 마지막엔 무조건 실행한다.
+       f.close
    
    
  99. 함수 메소드
   
+   -내장함수-
    * count(a) _ 문자열 안에 a의 개수를 세
    * find(a) _ 가장 앞엥 있는 a의 위치. 없으면 -1
    * ","join("abcd") _ 괄호안의 문자를 " "안의 문자로 쪼개서 나타냄 -> a,b,c,d
@@ -379,3 +417,19 @@
    * map(a,b)       - b에 대해 a를 진행한다 ex) x=map(int,input() ) 입력값을 int
    * round(실수,n)     - 소수점 n번째 자리까지만 표현
                     - n자리에 음수를 넣으면 정수자리에서 반올림ㄱㄴ
+   * max(), min()
+   * pow()  - 제곱
+   * zip() - 자료형을 묶어줌.  >>> list(zip([1,2],[3,4]))  -> [(1,3), (2,4)]
+   
+   -외장함수-
+   * time _ import time      - 1970.1.1.0시부터 지금까지 흐른 시간(sec)
+            print(time.time()) 
+            
+            for i in range(5):
+                print(i)
+                time.sleep(1) - 해당 출력 값을 1초씩 텀을 주고 나오게 함
+   * random _ import random
+              lotto - sorted(random.sample(range(1,46), 6))
+              print(lotto)
+   * webbrowser _ import webbrowser    -  웹페이지 열게하는 것.
+                  webbrowser.open("http://google.com")
