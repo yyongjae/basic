@@ -7,7 +7,7 @@ indeed_result = requests.get("https://kr.indeed.com/%EC%B7%A8%EC%97%85?q=python&
 #새로운 변수에 해당 페이지의 html내용을 파싱해온다
 indeed_soup = BeautifulSoup(indeed_result.text, 'html.parser')
 
-#pagination(페이지 세기)라는 class를 가져와서 변수에 입력
+#div태그 중에서 pagination(페이지 세기)라는 이름의 class를 가져와서 변수에 입력
 pagination = indeed_soup.find("div", {"class":"pagination"})
 
 #그 class안에서 a태그를 긁어온다
