@@ -1,0 +1,21 @@
+import requests
+from bs4 import BeautifulSoup
+
+#변수 지정하고 크롤링할 페이지를 입력한다
+indeed_result = requests.get("https://kr.indeed.com/%EC%B7%A8%EC%97%85?q=python&limit=50")
+
+#새로운 변수에 해당 페이지의 html내용을 파싱해온다
+indeed_soup = BeautifulSoup(indeed_result.text, 'html.parser')
+
+#pagination(페이지 세기)라는 class를 가져와서 변수에 입력
+pagination = indeed_soup.find("div", {"class":"pagination"})
+
+#그 class안에서 a태그를 긁어온다
+links = pagination.find_all('a')
+
+#pages라는 리스트를 만들어주고 a태그 안의 span태그를 긁어온다
+pages = []
+for link in links[:-1]:              #마지막 내용을 무시하는 이유는 밑에서 페이지의 숫자를 string에서 interger로 바꿀것이기때문 
+    pages.append(int(link.string))   #.string은 a태그로 입력했던 links의 내용들은 가져오는 메소
+
+print(pages)
