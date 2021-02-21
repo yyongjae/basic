@@ -13,7 +13,7 @@ pagination = indeed_soup.find("div", {"class":"pagination"})
 #그 class안에서 a태그를 긁어온다
 links = pagination.find_all('a')
 
-#pages라는 리스트를 만들어주고 a태그 안의 span태그를 긁어온다
+#pages라는 리스트를 만들어주고 a태그 안의 내용을 긁어온다
 pages = []
 for link in links[:-1]:              #마지막 내용을 무시하는 이유는 밑에서 페이지의 숫자를 string에서 interger로 바꿀것이기때문 
     pages.append(int(link.string))   #.string은 a태그로 입력했던 links의 내용들은 가져오는 메소
