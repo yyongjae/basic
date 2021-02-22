@@ -1,0 +1,27 @@
+import requests
+from bs4 import BeautifulSoup
+
+LIMIT = 50
+URL = "https://kr.indeed.com/%EC%B7%A8%EC%97%85?q=python&limit={LIMIT}}"
+
+
+def extract_indeed_pages():
+
+    result = requests.get(URL)
+    soup = BeautifulSoup(result.text, 'html.parser')
+    pagination = soup.find("div", {"class": "pagination"})
+    links = pagination.find_all('a')
+    pages = []
+    for link in links[:-1]:
+        pages.append(int(link.string))
+    #페이지가 입력된 리스트에서 마지막 값을 반
+    max_page = pages[-1]
+
+    return max_page
+
+def extract_indeed_jobs(last_page):
+    #단순히 노드가 실행되는지 확인하는 메소드 .status_code
+    for page in range(last_page):
+        #f-string을 통해서 각 페이지를 호출한다
+        result = requests.get(f"{URL}&start={page*LIMIT}")
+        print(result.status_code)
