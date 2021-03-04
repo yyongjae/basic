@@ -1,0 +1,25 @@
+
+1. 자료형
+
+  -정수 : int a = 1
+  -실수 : double b = 2.5
+  -문자열 : String name = '용초' or "용초"
+          - 파이썬 처럼 print(name1 + name2) 처럼 사용 가능
+  -boolean : bool isTrue = true;
+             bool inFalse = false;
+  
+  -걍 변수 : var
+          - var변수 선언과 동시에 입력하는 내용의 type으로 고정이 된다. 
+            ex) var a = 1; a = 'hi' (X) -> a는 int형으로 고정
+                var a;  a = 1; a = 'hi' (O)
+          
+  -dynamic type : var와 다르게 dynamic a = 1;  a = 'hi'; 형식의 변환이 자유롭다.
+  
+  ㄴ double a = 1; 은 되지만 int a = 1.5 는 안된다.
+  ㄴ '/'가 몫을 구하는 것이 아니라 나누기 그 자체임. 고로 실수형으로 반환하는 연산이고 몫은 ~/ 으로 구할 수 있다.
+  ㄴ print('$name1$name2')는 문자 그대로 출력되는 것이 아니라 $뒤에 무언가 작성하면 그것을 변수 처리를 해주기 때문에 위와 동일하게 나옴. (약간 파이썬의 f-string느낌)
+     ex) String word = '나는 $a살 입니다' -> 나는 5살 입니다
+     
+2. list
+
+  
