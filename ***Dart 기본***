@@ -1,0 +1,326 @@
+* 위젯(class)이란?
+  - 어플 상에서 모든 것이 위젯이다. 구성요소나 padding, column같은 요소들, 나아가 어플 그 자체도 위젯이라고 할 수 있다.
+  - Flutter의 모든 위젯은 argument를 갖는다.
+  - Stateless Widget : 변화가 없는 정적인 위젯_ 스크린상에 존재만 한다 / 어떠한 실시간 데이터도 저장x / 모양 상태를 변화시키는 value값을 지니지 않는다.
+  - Stateful Widget : 움직임이나 변화가 있는 위젯_ 체크박스, 텍스트박스 처럼 사용자의 interaction에 따라 변화가 일어나는 것.
+  - Widget tree : Widget은 부모자식 위젯으로 구성. flutter SDK에서 받은 모든 위젯을 사용할 수 있음.
+    ㄴ MyApp(커스텀_이름은 고정x 바꿀수o) : 루트 위젯, stateless, ㅃㅕ대
+     ㄴ MaterialApp : 전체 앱을 감싸는 위젯. 
+      ㄴ MyHomePage(커스텀) : ui나 디자인이 들어감
+       ㄴ Scaffold : 앱 화면과 기능을 구성하기 위한 빈 페이지를 준비해주는 위젯. 이미지 버튼 텍스트 등등이 들어감.
+        ㄴ AppBar : 앱 상단
+         ㄴ Text : Login 등..?
+        ㄴ Center
+         ㄴ Column
+          ㄴ Image
+          ㄴ TextField
+          ㄴ Button
+
+* 파일 
+  - pubspec.yaml : meta data를 정의, 관리하는 파일. 프로그램 버전이나 사용환경, 라이브러리 등을 정의.
+  - lib_main.dart : 코딩하는 주요 파일
+  -  
+  
+* 진행
+ 
+  - 'package:flutter/material.dart'를 항상 처음에 import해주고 시작한다.
+  
+  
+  
+* 주요기능 몇몇
+
+  - 파일에 이미지같은 걸 추가하고 터미널에서 
+    flutter pub get
+    flutter upgrade 이 두 명령어를 입력해줘야 호출해서 쓸 수가 있습니다.
+    그리고 pubspec.yaml의 assets: 이 부분에서 파일 경로 입력해줄 때 들여쓰기 잘 확인해야 인정해줍니당. assets앞에 탭1번 이미지 경로 앞에 탭 두번.
+    
+* 예시 코드
+
+  
+  import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp()); //MyApp이라는 뼈대를 만들어주는 것.
+
+class MyApp extends StatelessWidget { //stl를 치면 자동으로 정적인 커스텀 위젯 class 구조가 뜸 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(  
+      title: '무야호',   // 앱의 통칭. 이름 만들어주는것
+      theme: ThemeData(    // 앱의 기능적인 디자인 테마를 지정 
+        primarySwatch: Colors.blue // 앱의 기본적인 색상 견본 설정 
+      ),
+      home: MyHomePage(), //앱이 실행되었을 때 앱에 가장 먼저 보여지는 것. 여기서 MyHomePage를 입력해줘도 되고 바로 Scaffold 입력해도 된다.
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(   // 앱에서 다장한 기능을 넣을 수 있게 도와주는 도화지 느낌S
+      appBar: AppBar(
+        title: Text('ByeJyuJi'),   //text와 관련된 디자인적 기능을 담은 위젯.
+        centerTitle: true,         //가운데 정렬
+        backgroundColor: Colors.redAccent,  //배경색
+        elevation: 0.0,  //높이
+
+      ),
+
+      body: Center(            //가로축 정
+        child: Column(         //중요하다 이거
+            mainAxisAlignment: MainAxisAlignment.center,    //세로축 정렬(상단 중단 하단)
+            children: [
+              Text('맹'),
+              Text('정'),
+              Text('조')
+            ],
+          ),
+      ),
+      );
+
+  }
+}
+  
+  
+  
+  
+  
+ ㅡ,,ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+ 
+ import 'package:flutter/material.dart';
+void main() => runApp(MyApp());
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false, //우측 상단 빨간 띠를 없애
+      title: '바이쥬직회사',
+      home: Grade(),   //
+    );
+  }
+}
+class Grade extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('바이쥬지'),
+        backgroundColor: Colors.redAccent,
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, //가로 혹은 세로로 자운데 정렬
+          children: [
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('image/BJJ.jpg'), //이미지 호출 
+                radius: 80.0,
+              ),
+            ),
+            Divider(             // 공간 나누는 선 두두등장
+              height: 60.0,      // 선의 위아래 합친 길이가 60이라는
+              color: Colors.grey[900],
+              thickness: 0.5,    //선 굵기
+              endIndent: 30.0,   //side에서 부터 얼마나 떨어져있나
+            ),
+            Text('name',
+            style: TextStyle(
+              color: Colors.red,
+              letterSpacing: 2.0
+            ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text('ByeJyuJi',
+            style: TextStyle(
+              color: Colors.red,
+              letterSpacing: 2.0,
+              fontSize: 28.0,
+              fontWeight: FontWeight.bold
+            ),),
+            SizedBox(
+              height: 50.0,
+            ),
+            Text('Selected by',
+              style: TextStyle(
+                  color: Colors.red,
+                  letterSpacing: 2.0
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text('Forbes',
+              style: TextStyle(
+                  color: Colors.red,
+                  letterSpacing: 2.0,
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              children: [
+                Icon(Icons.check_circle_outline),
+                Text('SJCE OlHAEui Giup',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  letterSpacing: 1.0
+                ),)
+              ],
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Row(
+              children: [
+                Icon(Icons.check_circle_outline),
+                Text('Promising Corp.',
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      letterSpacing: 1.0
+                  ),)
+              ],
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Row(
+              children: [
+                Icon(Icons.check_circle_outline),
+                Text('SexSexBo',
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      letterSpacing: 1.0
+                  ),)
+              ],
+            ),
+            Center(
+
+              child: CircleAvatar(
+                backgroundImage: AssetImage('image/JyuJipet.jpeg'),
+                radius:  60.0,
+                backgroundColor: Colors.grey
+              ),
+            ),
+
+        ],
+      ),
+    ),
+    );
+
+  }
+}
+
+  
+  
+  
+  
+0. 대부분이 class이고 객체이다.
+   
+   && , ||
+   // or /*  *  */
+
+
+1. Data Type
+
+  * 정수 : int a = 1
+  * 실수 : double b = 2.5
+  * 문자열 : String name = '용초' or "용초"
+          - 파이썬 처럼 print(name1 + name2) 처럼 사용 가능
+  * boolean : bool isTrue = true;
+             bool inFalse = false;
+  
+  * 걍 변수 : var
+          - var변수 선언과 동시에 입력하는 내용의 type으로 고정이 된다. 
+            ex) var a = 1; a = 'hi' (X) -> a는 int형으로 고정
+                var a;  a = 1; a = 'hi' (O)
+          
+  * dynamic type : var와 다르게 dynamic a = 1;  a = 'hi'; 형식의 변환이 자유롭다.
+  
+  * final & const : var와 비슷하게 data 값을 고정시켜주는 역할.
+  
+   - final a = 1;  : 사용자가 실행하는 런타임 때 값이 대입. 이 부분은 정의만 해두는 것이고 후에 생성자를 통해 값을 한번 바꿀 수 있음.
+   - const a = 1;  : 컴파일이 될 때 값이 대입 _불변 but fast
+   
+   
+  ㄴ double a = 1; 은 되지만 int a = 1.5 는 안된다.
+  ㄴ '/'가 몫을 구하는 것이 아니라 나누기 그 자체임. 고로 실수형으로 반환하는 연산이고 몫은 ~/ 으로 구할 수 있다.
+  ㄴ print('$name1$name2')는 문자 그대로 출력되는 것이 아니라 $뒤에 무언가 작성하면 그것을 변수 처리를 해주기 때문에 위와 동일하게 나옴. (약간 파이썬의 f-string느낌)
+     ex) String word = '나는 $a살 입니다' -> 나는 5살 입니다
+     
+  * list
+
+   - List ages = [1,2,3];    : 인덱스값 변환가능, 
+
+  * Map
+  
+   - Map person = {'name' : '용초', 'age' : 24}; : 처럼 약간 구조체 느낌
+   
+
+2. if문 _ c언어
+
+   * if(true){
+      print(a);
+   }
+   else if{
+      print(b);
+   }
+   else{
+      print(c);
+   }
+   
+3. 반복문 _ c언어 + py3
+
+  * for (int i=0; i<10;i++){
+        print(a);
+    }
+    
+  * list ages = [1,2,3];
+    for (var age in ages){
+      print(age);
+    }
+ 
+  
+  * while(true){
+      print(a);
+    }
+    
+4. 함수 _ c
+
+  * int add(int a, int b){
+        return a+b;
+    }
+    
+    -   return 타입은 쓰지 않아도 되지만 헷갈린다면 쓰자.
+  * method
+   
+   - .where() : 괄호 안의 조건을 이행시키는 
+   - .forEach() : 주어진 함수를 리스트 요소 각각 실행시킴 ex_list.forEach(print)처럼 print같은 함수들도 변수처럼 이용가능.
+   - .contain() : ex_ list = ['abc', 'def', 'efg']  print( list.contains('ef') ) = true
+                  arrow에 lambda에 적용하면 filtered_list.where((list) => list.contains('ef')).forEach(print) = def, efg
+   
+   
+5. arrow/lambda
+
+  * ex) var filter = ages.where((age) => age > 10);    : where은 조건메소드, '=>' 기호 왼쪽에는 변수명, 오른쪽은 동작할 코드나 반환값 _ 10초과의 값들이 filter변수에 입력.
+  
+6. import
+
+  * import '파일명.dart' 를 실행하면 그 파일에 있는 함수같은 것을 쓸 수 있다. 함수 밖에 선언.
+  * 외부 라이브러리를 가져올 수도 있다.
+  
+7. class
+
+ gfghj  * 
+    
+    
+    
+    
