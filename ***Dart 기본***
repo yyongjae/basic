@@ -1,4 +1,8 @@
-* 위젯(class)이란?
+* Class : 객체의 속성과 기능이 정의 되어있는 설계도
+* Object : class가 정의되고 메모리에 할당되었을 때 이를 객체라 함
+* Instance : object가 소프트웨어적으로 실현된 것. instance는 object와 비슷한 말이긴 하지만 '~부터 생성되었다'라는 의미를 내포하기 때문에 ~와의 관계에 좀 더 무게가 실림.
+             __object는 class의 instance다.
+* 위젯(class)?
   - 어플 상에서 모든 것이 위젯이다. 구성요소나 padding, column같은 요소들, 나아가 어플 그 자체도 위젯이라고 할 수 있다.
   - Flutter의 모든 위젯은 argument를 갖는다.
   - Stateless Widget : 변화가 없는 정적인 위젯_ 스크린상에 존재만 한다 / 어떠한 실시간 데이터도 저장x / 모양 상태를 변화시키는 value값을 지니지 않는다.
@@ -319,7 +323,25 @@ class Grade extends StatelessWidget {
   
 7. class
 
- gfghj  * 
+ class Person{
+  String name;
+  int age;
+  String sex;
+  
+  Person({String name, int age, String sex}){
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+  }
+}
+
+void main(){
+
+  Person p1 = new Person();   //p1이 Instance, new Person이 생성자
+  Person p2 = new Person();   
+    
+  
+}
     
     
     
